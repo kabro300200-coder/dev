@@ -169,7 +169,7 @@
 
     <div class="mt-12 grid grid-cols-3 gap-4 max-w-lg mx-auto">
       <div class="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-        <div class="text-3xl font-black text-yellow-300">6+</div>
+        <div class="text-3xl font-black text-yellow-300">10+</div>
         <div class="text-green-100 text-sm">Courses</div>
       </div>
       <div class="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -371,7 +371,7 @@
 <!-- ════════════ PURCHASE MODAL ════════════ -->
 <div id="purchase-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop bg-black/60 p-4">
   <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative">
-    <button onclick="closeModal('purchase-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">✕</button>
+    <button type="button" onclick="closeModal('purchase-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">✕</button>
     <div id="purchase-content"></div>
   </div>
 </div>
@@ -465,13 +465,13 @@ function renderNav() {
   if (currentUser) {
     el.innerHTML = `
       <span class="hidden sm:block text-green-700 font-semibold text-sm truncate max-w-[160px]">${currentUser.email}</span>
-      ${isAdmin ? `<button onclick="scrollAdmin()" class="btn-gold text-white text-xs font-bold px-3 py-2 rounded-full">🛡️ Admin Panel</button>` : ''}
-      <button onclick="doLogout()" class="border-2 border-green-700 text-green-700 font-bold px-4 py-2 rounded-full text-sm hover:bg-green-700 hover:text-white transition">Logout</button>
+      ${isAdmin ? `<button type="button" onclick="scrollAdmin()" class="btn-gold text-white text-xs font-bold px-3 py-2 rounded-full">🛡️ Admin Panel</button>` : ''}
+      <button type="button" onclick="doLogout()" class="border-2 border-green-700 text-green-700 font-bold px-4 py-2 rounded-full text-sm hover:bg-green-700 hover:text-white transition">Logout</button>
     `;
   } else {
     el.innerHTML = `
-      <button onclick="openAuthModal('login')"    class="border-2 border-green-700 text-green-700 font-bold px-4 py-2 rounded-full text-sm hover:bg-green-50 transition">Login</button>
-      <button onclick="openAuthModal('register')" class="btn-green text-white font-bold px-4 py-2 rounded-full text-sm">Register</button>
+      <button type="button" onclick="openAuthModal('login')"    class="border-2 border-green-700 text-green-700 font-bold px-4 py-2 rounded-full text-sm hover:bg-green-50 transition">Login</button>
+      <button type="button" onclick="openAuthModal('register')" class="btn-green text-white font-bold px-4 py-2 rounded-full text-sm">Register</button>
     `;
   }
 }
@@ -636,7 +636,7 @@ window.addEventListener('load', async () => {
       alert('Email sign-in failed: ' + (e.message || e.code));
     }
   }
-}
+});
 
 async function doLogout() {
   await auth.signOut();
@@ -703,7 +703,7 @@ function openPurchaseModal(course) {
     <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-5 text-sm text-amber-700 leading-relaxed">
       ℹ️ After clicking <strong>"Request to Buy"</strong>, our admin will review your request and contact you with payment and access details within 24 hours.
     </div>
-    <button onclick="submitPurchaseRequest('${course.id}','${course.title}',${course.price})"
+    <button type="button" onclick="submitPurchaseRequest('${course.id}','${course.title}',${course.price})"
       class="btn-gold w-full text-white font-black py-3 rounded-xl text-lg shadow-lg cursor-pointer">
       📨 Request to Buy
     </button>
